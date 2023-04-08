@@ -51,6 +51,7 @@ var reviewer = new GitHubPullRequestReviewer(
     Environment.GetEnvironmentVariable("OPENAI_API_KEY")
 );
 
+// If you want to create a pull request
 var pullRequestUrl = await reviewer.CreatePullRequest(
     repositoryName: "your-repository-name",
     baseBranchName: "main",
@@ -60,6 +61,7 @@ var pullRequestUrl = await reviewer.CreatePullRequest(
     diff: "The changes made in the new feature."
 );
 
+// Scan for pull requests to add review, you can set this to poll periodically, or you can implment a trigger such as pubsub, or webhook if desired.
 await reviewer.CheckForNewPullRequestsAndPostComments("your-repository-name");
 ```
 
