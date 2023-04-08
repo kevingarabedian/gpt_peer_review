@@ -1,4 +1,4 @@
-# GitHub Pull Request Reviewer
+# GitHub GPT Pull Request Peer Reviewer
 
 This is a proof of concept project that demonstrates the use of GPT to generate comments for GitHub pull requests. 
 
