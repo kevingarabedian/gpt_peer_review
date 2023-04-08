@@ -1,19 +1,5 @@
 # GitHub GPT Pull Request Peer Reviewer
 
-  ooooooo8 oooooooooo  ooooooooooo      oooooooooo                                         oooooooooo                         o88                            
-
-o888    88  888    888 88  888  88       888    888 ooooooooo8 ooooooooo8 oo oooooo         888    888 ooooooooo8 oooo   oooo oooo  ooooooooo8 oooo  o  oooo 
-
-888    oooo 888oooo88      888           888oooo88 888oooooo8 888oooooo8   888    888       888oooo88 888oooooo8   888   888   888 888oooooo8   888 888 888  
-
-888o    88  888            888           888       888        888          888              888  88o  888           888 888    888 888           888888888   
-
- 888ooo888 o888o          o888o         o888o        88oooo888  88oooo888 o888o            o888o  88o8  88oooo888     888     o888o  88oooo888    88   88    
-
-                                                                                                                                                             
-
-
-
 Demonstrates the use of GPT to generate comments for GitHub pull requests. 
 
 ## How to Use
