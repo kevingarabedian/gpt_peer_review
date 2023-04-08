@@ -1,28 +1,68 @@
+# GitHub Pull Request Reviewer
 
-To use this updated class, you can first create an instance of it with your GitHub access token and OpenAI API key. Then, you can call the `CheckForNewPullRequestsAndPostComments` method periodically to check for new pull requests and post comments with suggested changes on them. The method will only post comments on pull requests that have not been commented on by the app before.
+This is a proof of concept project that demonstrates the use of GPT to generate comments for GitHub pull requests. 
 
-You can still use the `CreatePullRequest` method to create new pull requests with suggested changes. Note that the `diff` parameter is now optional and will only be used if you want to suggest changes when creating the pull request.
+## How to Use
 
-Here's an example of how you might use this updated class:
+To use this code, you'll need a personal access token from GitHub and an OpenAI API key. 
 
-```csharp
-var accessToken = "your-github-access-token-here";
-var openAiApiKey = "your-openai-api-key-here";
+### Personal Access Token from GitHub
 
-var reviewer = new GitHubPullRequestReviewer(accessToken, openAiApiKey);
+1. Go to [https://github.com/settings/tokens](https://github.com/settings/tokens).
+2. Click on "Generate new token".
+3. Give the token a name.
+4. Select the "repo" scope.
+5. Click on "Generate token".
+6. Copy the token.
 
-var repositoryName = "openai/gpt-3";
-var baseBranchName = "master";
-var headBranchName = "my-feature-branch";
-var title = "My Pull Request";
-var body = "This is my pull request.";
+### OpenAI API Key
 
-var pullRequestUrl = await reviewer.CreatePullRequest(repositoryName, baseBranchName, headBranchName, title, body);
+1. Go to [https://beta.openai.com/docs/developer-quickstart/your-api-keys](https://beta.openai.com/docs/developer-quickstart/your-api-keys).
+2. Click on "Create a new API key".
+3. Give the API key a name.
+4. Click on "Create API key".
+5. Copy the API key.
 
-Console.WriteLine($"Created pull request: {pullRequestUrl}");
+### Environment Variables
 
-while (true)
-{
-    await reviewer.CheckForNewPullRequestsAndPostComments(repositoryName);
-    await Task.Delay(TimeSpan.FromMinutes(5));
-}
+On Windows, you can set environment variables using the following command:
+
+```
+setx GITHUB_ACCESS_TOKEN "your personal access token from GitHub"
+setx OPENAI_API_KEY "your OpenAI API key"
+```
+
+On Linux, you can set environment variables using the following command:
+
+```
+export GITHUB_ACCESS_TOKEN="your personal access token from GitHub"
+export OPENAI_API_KEY="your OpenAI API key"
+```
+
+### Code
+
+Once you have your personal access token and OpenAI API key, you can create a new instance of the `GitHubPullRequestReviewer` class and call its methods to create pull requests and generate comments for existing pull requests. 
+
+Here's an example:
+
+```
+var reviewer = new GitHubPullRequestReviewer(
+    Environment.GetEnvironmentVariable("GITHUB_ACCESS_TOKEN"),
+    Environment.GetEnvironmentVariable("OPENAI_API_KEY")
+);
+
+var pullRequestUrl = await reviewer.CreatePullRequest(
+    repositoryName: "your-repository-name",
+    baseBranchName: "main",
+    headBranchName: "new-feature-branch",
+    title: "Add new feature",
+    body: "This pull request adds a new feature.",
+    diff: "The changes made in the new feature."
+);
+
+await reviewer.CheckForNewPullRequestsAndPostComments("your-repository-name");
+```
+
+## Disclaimer
+
+Use at your own risk. This is a proof of concept project and is not intended for production use. It is for educational and entertainment purposes only.
