@@ -64,7 +64,3 @@ var pullRequestUrl = await reviewer.CreatePullRequest(
 // Scan for pull requests to add review, you can set this to poll periodically, or you can implment a trigger such as pubsub, or webhook if desired.
 await reviewer.CheckForNewPullRequestsAndPostComments("your-repository-name");
 ```
-
-## Disclaimer
-
-Use at your own risk. This is a proof of concept project and is not intended for production use. It is for educational and entertainment purposes only.
